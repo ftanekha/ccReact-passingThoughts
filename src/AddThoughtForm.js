@@ -13,7 +13,10 @@ export function AddThoughtForm(props) {
             text: text,
             expiresAt: getNewExpirationTime(),
         }
-        props.addThought(thought)   
+        //check user input (thought) isn't empty
+        event.target.value.length > 0 && props.addThought(thought) 
+        //clear input field on form submit
+        setText('')
     }
     return (
         <form className="AddThoughtForm" onSubmit={handleSubmit}>
