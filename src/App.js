@@ -19,6 +19,9 @@ function App() {
   ]);
 
   const addThought = thought => setThoughts([thought,...thoughts])
+  const removeThought = thoughtIdToRemove => setThoughts(
+    thoughts.filter( thought => thought.id !== thoughtIdToRemove)
+  )
 
   return (
     <div className="App">
@@ -29,7 +32,7 @@ function App() {
         <AddThoughtForm addThought={addThought}/>
         <ul className="thoughts">
           {thoughts.map((thought) => (
-            <Thought key={thought.id} thought={thought} />
+            <Thought key={thought.id} thought={thought} removeThought={removeThought}/>
           ))}
         </ul>
       </main>
